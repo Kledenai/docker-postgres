@@ -4,9 +4,9 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_PASSWORD: "SuperSecret"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres:/var/lib/postgresql/data
     networks:
@@ -15,10 +15,10 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: "development@musitive.com"
-      PGADMIN_DEFAULT_PASSWORD: "SuperSecret"
+      PGADMIN_DEFAULT_EMAIL: "${PGADMIN_EMAIL}"
+      PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_PASSWORD}"
     ports:
-      - "8080:80"
+      - "${PGADMIN_PORT}:80"
     depends_on:
       - postgres
     networks:
