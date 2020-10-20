@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "SuperSecret"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "development@musitive.com"
+      PGADMIN_DEFAULT_PASSWORD: "SuperSecret"
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+
+volumes:
+  postgres:
+
+networks:
+  postgres:
+    driver: bridge
