@@ -1,9 +1,14 @@
-version: '3'
+version: "3.7"
 
 services:
   postgres:
     image: postgres
     environment:
+      POSTGRES_PRIMARY_USER: "${POSTGRES_PRIMARY_USER}"
+      POSTGRES_PRIMARY_PASSWORD: "${POSTGRES_PRIMARY_PASSWORD}"
+      POSTGRES_ROOT_PASSWORD: "${POSTGRES_ROOT_PASSWORD}"
+      POSTGRES_DATABASE: "${POSTGRES_DATABASE}"
+      POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
     ports:
       - "${POSTGRES_PORT}:5432"
