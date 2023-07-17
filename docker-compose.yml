@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   postgres:
+    container_name: postgres
     image: postgres
     environment:
       POSTGRES_PRIMARY_USER: "${POSTGRES_PRIMARY_USER}"
@@ -16,6 +17,7 @@ services:
     networks:
       - postgres
   pgadmin:
+    container_name: pgadmin
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: "${PGADMIN_EMAIL}"
